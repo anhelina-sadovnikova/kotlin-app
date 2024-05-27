@@ -74,7 +74,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:backgroundTint="@color/my_light_primary_dark"
-        android:text="Sign in"
+        android:text="Sign up"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
