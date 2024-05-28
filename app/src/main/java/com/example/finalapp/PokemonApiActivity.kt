@@ -17,9 +17,9 @@ class PokemonApiActivity : AppCompatActivity() {
 
     lateinit var apiBinding: ActivityPokemonApiBinding
 
-    private val baseUrl = "https://jsonplaceholder.typicode.com/"
+    private val baseUrl = "https://pokeapi.co/api/v2/"
 
-    var itemsList = ArrayList<Items>()
+    var pokemonList = ArrayList<Pokemon>()
 
     lateinit var adapter: ItemsAdapter
 
@@ -43,33 +43,32 @@ class PokemonApiActivity : AppCompatActivity() {
 
         val retrofitAPI : RetrofitAPI = retrofit.create(RetrofitAPI::class.java)
 
-        val call : Call<List<Items>> = retrofitAPI.getAllPosts()
+        val call : Call<PokemonResponse> = retrofitAPI.getPokemonList()
 
-        call.enqueue(object : Callback<List<Items>>{
+        call.enqueue(object : Callback<PokemonResponse>{
 
-            override fun onResponse(p0: Call<List<Items>>, p1: Response<List<Items>>) {
+            override fun onResponse(p0: Call<PokemonResponse>, p1: Response<PokemonResponse>) {
 
                 if(p1.isSuccessful){
 
                     apiBinding.progressBarApi.isVisible = false
                     apiBinding.recyclerView.isVisible = true
 
-                    itemsList = p1.body() as ArrayList<Items>
-                    adapter = ItemsAdapter(itemsList)
-                    apiBinding.recyclerView.adapter = adapter
+                    val response = p1.body()
+                    if (response != null) {
+                        pokemonList = ArrayList(response.results)
+                        adapter = ItemsAdapter(pokemonList)
+                        apiBinding.recyclerView.adapter = adapter
+                    }
 
                 }
-
             }
 
-            override fun onFailure(p0: Call<List<Items>>, p1: Throwable) {
+            override fun onFailure(p0: Call<PokemonResponse>, p1: Throwable) {
 
                 Toast.makeText(applicationContext,p1.localizedMessage,Toast.LENGTH_SHORT).show()
 
             }
-
         })
-
     }
-
 }

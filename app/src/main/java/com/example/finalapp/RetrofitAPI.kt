@@ -6,7 +6,8 @@ import retrofit2.http.Query
 
 interface RetrofitAPI {
 
-    @GET("/posts")
-    fun getAllPosts() : Call<List<Items>>
+    @GET("pokemon")
+    fun getPokemonList(@Query("limit") limit: Int = 20, @Query("offset") offset: Int = 0): Call<PokemonResponse>
+
 
 }

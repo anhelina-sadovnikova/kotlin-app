@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalapp.databinding.ItemsBinding
 
-class ItemsAdapter (var itemsList : ArrayList<Items>) : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
+class ItemsAdapter (var pokemonList : ArrayList<Pokemon>) : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
 
     inner class ItemsViewHolder(val adapterBinding:ItemsBinding)
         : RecyclerView.ViewHolder(adapterBinding.root){}
@@ -21,17 +21,13 @@ class ItemsAdapter (var itemsList : ArrayList<Items>) : RecyclerView.Adapter<Ite
 
     override fun getItemCount(): Int {
 
-        return itemsList.size
+        return pokemonList.size
 
     }
 
     override fun onBindViewHolder(holder: ItemsViewHolder, position: Int) {
 
-        holder.adapterBinding.textViewUserId.text = itemsList[position].userId.toString()
-        holder.adapterBinding.textViewId.text = itemsList[position].id.toString()
-        holder.adapterBinding.textViewTitle.text = itemsList[position].title
-        holder.adapterBinding.textViewBody.text = itemsList[position].subtitle
+        holder.adapterBinding.textViewPokemonName.text = pokemonList[position].name
 
     }
-
 }
