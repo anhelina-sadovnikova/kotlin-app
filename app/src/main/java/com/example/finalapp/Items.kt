@@ -18,8 +18,13 @@ data class PokemonResponse(
     val previous: String?,
     val results: List<Pokemon>
 )
-
 data class Pokemon(
     val name: String,
     val url: String // Include the URL if you need it later
+)
+data class PokemonDetail(
+    val sprites: Sprites
+)
+data class Sprites(
+    val front_default: String?
 )

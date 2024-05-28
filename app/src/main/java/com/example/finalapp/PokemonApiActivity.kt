@@ -54,13 +54,12 @@ class PokemonApiActivity : AppCompatActivity() {
                     apiBinding.progressBarApi.isVisible = false
                     apiBinding.recyclerView.isVisible = true
 
-                    val response = p1.body()
-                    if (response != null) {
-                        pokemonList = ArrayList(response.results)
-                        adapter = ItemsAdapter(pokemonList)
+                    val pokemonResponse = p1.body()
+                    if (pokemonResponse != null) {
+                        pokemonList = ArrayList(pokemonResponse.results)
+                        adapter = ItemsAdapter(pokemonList, retrofitAPI)
                         apiBinding.recyclerView.adapter = adapter
                     }
-
                 }
             }
 
