@@ -29,11 +29,15 @@ class LoginActivity : AppCompatActivity() {
 
         }
         loginBinding.textViewSignUp.setOnClickListener{
+
             val intent = Intent(this,SignUpActivity::class.java)
             startActivity(intent)
 
         }
         loginBinding.textViewForgotPassword.setOnClickListener {
+
+            val intent = Intent(this,ForgotPasswordActivity::class.java)
+            startActivity(intent)
 
         }
     }
