@@ -31,5 +31,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+        mainBinding.buttonStartQuiz.setOnClickListener {
+
+            val intent = Intent(this,QuizActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 }
