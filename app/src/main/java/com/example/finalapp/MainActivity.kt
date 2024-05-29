@@ -24,5 +24,19 @@ class MainActivity : AppCompatActivity() {
             finish()
 
         }
+
+        mainBinding.buttonApi.setOnClickListener {
+
+            val intent = Intent(this,PokemonApiActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        mainBinding.buttonStartQuiz.setOnClickListener {
+
+            val intent = Intent(this,QuizActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 }
