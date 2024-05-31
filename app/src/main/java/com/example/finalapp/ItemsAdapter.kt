@@ -15,8 +15,8 @@ class ItemsAdapter(
     private val retrofitAPI: RetrofitAPI
 ) : RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
 
-    inner class ItemsViewHolder(val adapterBinding:ItemsBinding)
-        : RecyclerView.ViewHolder(adapterBinding.root){}
+    inner class ItemsViewHolder(val adapterBinding: ItemsBinding) :
+        RecyclerView.ViewHolder(adapterBinding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemsViewHolder {
 
@@ -42,6 +42,32 @@ class ItemsAdapter(
                 if (response.isSuccessful) {
                     val pokemonDetail = response.body()
                     if (pokemonDetail != null) {
+                        val spriteUrl = pokemonDetail.sprites.front_default
+                        if (!spriteUrl.isNullOrEmpty()) {
+                            Glide.with(holder.itemView.context)
+                                .load(spriteUrl)
+                                .into(holder.adapterBinding.imageViewPokemon)
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(p0: Call<PokemonDetail>, p1: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+        // Fetch and display details
+        retrofitAPI.getPokemonDetail(pokemon.name).enqueue(object : Callback<PokemonDetail> {
+            override fun onResponse(call: Call<PokemonDetail>, response: Response<PokemonDetail>) {
+                if (response.isSuccessful) {
+                    val pokemonDetail = response.body()
+                    if (pokemonDetail != null) {
+                        holder.adapterBinding.height.text = "${pokemonDetail.height}"
+                        holder.adapterBinding.weight.text = "${pokemonDetail.weight}"
+                        holder.adapterBinding.abilities.text = "${pokemonDetail.abilities.joinToString { it.ability.name }}"
+                        holder.adapterBinding.types.text = "${pokemonDetail.types.joinToString { it.type.name }}"
+
+
                         val spriteUrl = pokemonDetail.sprites.front_default
                         if (!spriteUrl.isNullOrEmpty()) {
                             Glide.with(holder.itemView.context)

@@ -1,17 +1,5 @@
 package com.example.finalapp
 
-import com.google.gson.annotations.SerializedName
-
-data class Items(
-
-    val userId: Int,
-    val id: Int,
-    val title: String,
-
-    @SerializedName("body")
-    val subtitle: String
-
-)
 data class PokemonResponse(
     val count: Int,
     val next: String?,
@@ -23,8 +11,22 @@ data class Pokemon(
     val url: String // Include the URL if you need it later
 )
 data class PokemonDetail(
+    val height: Int,
+    val weight: Int,
+    val abilities: List<Ability>,
+    val types: List<Type>,
     val sprites: Sprites
 )
 data class Sprites(
     val front_default: String?
+)
+data class Ability(
+    val ability: NamedAPIResource
+)
+data class Type(
+    val type: NamedAPIResource
+)
+data class NamedAPIResource(
+    val name: String,
+    val url: String
 )
