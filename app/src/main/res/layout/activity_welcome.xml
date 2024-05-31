@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/imageViewSplash"
-        android:layout_width="314dp"
-        android:layout_height="319dp"
-        android:layout_marginTop="93dp"
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="110dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

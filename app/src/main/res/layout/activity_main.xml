@@ -23,20 +23,22 @@
         android:layout_width="130dp"
         android:layout_height="70dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="265dp"
         android:text="Pokemon info"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/buttonStartQuiz"
         android:layout_width="130dp"
         android:layout_height="70dp"
-        android:layout_marginTop="265dp"
         android:layout_marginEnd="55dp"
         android:text="Quiz"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ImageView
         android:id="@+id/imageView"
